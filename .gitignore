@@ -1,0 +1,5 @@
+vcpkg/
+
+*.out/
+
+Assembly_Cheatsheet.txt
