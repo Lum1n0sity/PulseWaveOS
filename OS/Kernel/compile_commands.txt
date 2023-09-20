@@ -1,0 +1,11 @@
+# Compile the assembly code
+as kernel_entry.s -o kernel_entry.o
+
+# Compile the C code
+gcc -c kernel.c -o kernel.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
+
+# Link everything into a single kernel.elf file
+ld kernel_entry.o kernel.o -o kernel.elf -Ttext 0x1000 --oformat elf64-x86-64
+
+# Convert the kernel.elf file into binary format (kernel.bin)
+objcopy -O binary kernel.elf kernel.bin
